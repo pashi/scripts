@@ -12,6 +12,7 @@ def read_params():
         parser.add_argument('--sf', help='start frame', type=int, default=0)
         parser.add_argument('--ef', help='end frame', type=int, default=0)
         parser.add_argument('--fs', help='frame steps', type=int, default=25)
+        parser.add_argument('--fileprefix', help='output fileprefix', default='f_')
         parser.add_argument('video', help='video filename')
         parser.add_argument('outputdir', help='output directory', default='/tmp')
         args = parser.parse_args()
@@ -46,7 +47,7 @@ def convert():
 			if args.fs > 0 and not pc%args.fs == 0:
 				export_frame = False
 
-			filename = '%s/f_%06d.jpg' % (args.outputdir, frame.index)
+			filename = '%s/%s%06d.jpg' % (args.outputdir, args.fileprefix,frame.index)
 #			print "export %s file=%s, index=%s, pc=%s %s" % (export_frame,filename,frame.index,pc, (pc%args.fs))
 			pc+=1
 			if not export_frame:
