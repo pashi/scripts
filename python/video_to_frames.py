@@ -17,7 +17,7 @@ def read_params():
         parser.add_argument('outputdir', help='output directory', default='/tmp')
         args = parser.parse_args()
         if args.debug:
-                print args
+                print (args)
 
 
 def convert():
@@ -52,8 +52,8 @@ def convert():
 			pc+=1
 			if not export_frame:
 				continue
-			print "export file=%s, frame index=%s" % (filename,frame.index)
-        		frame.to_image().save(filename)
+			print ("export file=%s, frame index=%s" % (filename,frame.index))
+			frame.to_image().save(filename)
 
 
 if __name__ == "__main__":
